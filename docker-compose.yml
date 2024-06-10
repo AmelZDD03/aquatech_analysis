@@ -1,0 +1,6 @@
+services:
+  aqua_analysis:
+    build: .
+    volumes:
+      - .:/app
+    command: ["python" , "process_data.py"]
