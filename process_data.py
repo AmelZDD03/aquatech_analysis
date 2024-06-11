@@ -4,7 +4,7 @@ import plotly.express as px
 
 
 # Décompresser le fichier db.7z
-with py7zr.SevenZipFile('db.7z', mode='r') as z:
+with py7zr.SevenZipFile('data/db.7z', mode='r') as z:
     z.extractall("data")
 
 # Lecture des fichiers CSV
@@ -39,8 +39,9 @@ for parent in sensors['parent_addr'].unique():
         leaks.loc[leaks['sensor_addr'] == parent, "total"] = (parent_total - childs_total_values)
 
 # Sauvegarder les résultats
-totals.to_csv('output/totals.csv')
-leaks.to_csv('output/leaks.csv', index=False)
+output = 'output/data-output/'
+totals.to_csv(output+'totals.csv')
+leaks.to_csv(output+'leaks.csv', index=False)
 
 # Data visualization
 totals.reset_index(inplace=True)
@@ -54,5 +55,6 @@ fig2 = px.bar(leaks, x= 'sensor_addr', y= 'total', title='Fuites par capteur',
               hover_data=['sensor_addr', 'total'])
 
 # Enregistrer les graphiques interactifs sous forme de fichiers HTML
-fig1.write_html('output/totals.html')
-fig2.write_html('output/leaks.html')
+output_path = 'output/figures/'
+fig1.write_html(output_path+'totals.html')
+fig2.write_html(output_path+'leaks.html')

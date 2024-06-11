@@ -1,5 +1,5 @@
-## Technologies Utilisées
-- Python: Primary programming language for data analysis and generating graphs.(Used in all my previous data projects and certified Python for data Engineering at DataScientest)
+## Used technologies 
+- Python: Primary programming language for data analysis and generating graphs.(Used in all my previous data projects)
 - Pandas: Python library simplifies data manipulation and analysis, particularly when working with CSV files, making tasks more efficient.
 - Plotly: Python library for creating interactive graphs.
 ## Run Project
